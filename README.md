@@ -29,3 +29,7 @@ Use the `colorizedstatus#*` functions in your status line:
 	set statusline+=%#StatusLineErrorCount#%(\ %{colorizedstatus#ErrorInfo()}\ %)%*
 	set statusline+=%#StatusLineWarningCount#%(\ %{colorizedstatus#WarningInfo()}\ %)%*
 	set statusline+=\ %-9.(%5.l,%3.v%)\ %P
+
+Screenshot:
+
+![screenshot](screenshot.png?raw=true)
