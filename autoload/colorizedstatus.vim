@@ -29,9 +29,14 @@ function! colorizedstatus#PasteInfo(...) abort
 	return 'P'
 endfunction
 
+let s:lsc_warn_groups = ["lscDiagnosticWarning", "lscDiagnosticInfo", "lscDiagnosticHint"]
+let s:lsc_err_groups = ["lscDiagnosticError"]
+
 function! colorizedstatus#ErrorInfo(...) abort
-	let l:counts = ale#statusline#Count(bufnr(''))
-	let err_cnt = l:counts.error + l:counts.style_error
+	let err_cnt = len(filter(
+		\ copy(getmatches()),
+		\ {idx, match_ -> index(s:lsc_err_groups, match_["group"]) != -1}
+	\ ))
 	if err_cnt == 0
 		return ''
 	endif
@@ -39,8 +44,10 @@ function! colorizedstatus#ErrorInfo(...) abort
 endfunction
 
 function! colorizedstatus#WarningInfo(...) abort
-	let l:counts = ale#statusline#Count(bufnr(''))
-	let warn_cnt = l:counts.warning + l:counts.style_warning
+	let warn_cnt = len(filter(
+		\ copy(getmatches()),
+		\ {idx, match_ -> index(s:lsc_warn_groups, match_["group"]) != -1}
+	\ ))
 	if warn_cnt == 0
 		return ''
 	endif

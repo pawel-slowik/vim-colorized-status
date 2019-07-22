@@ -4,7 +4,7 @@ for the [Vim](https://www.vim.org/) editor.
 ## Requirements
 
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
-- [ALE](https://github.com/w0rp/ale)
+- [vim-lsc](https://github.com/natebosch/vim-lsc)
 - [vim-current-function](https://github.com/pawel-slowik/vim-current-function)
 
 ## Usage
