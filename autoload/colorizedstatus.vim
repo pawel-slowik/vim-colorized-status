@@ -1,8 +1,13 @@
 function! colorizedstatus#GitInfo(...) abort
-	if !exists('b:git_dir')
-		return ''
+	if exists('b:git_dir')
+		return fugitive#head(6)
 	endif
-	return fugitive#head(6)
+	if exists('*FugitiveGitDir')
+		if !empty(FugitiveGitDir(bufnr('')))
+			return fugitive#Statusline()
+		endif
+	endif
+	return ''
 endfunction
 
 function! colorizedstatus#PathInfo(...) abort
