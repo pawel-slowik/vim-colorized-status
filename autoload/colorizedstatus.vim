@@ -4,7 +4,7 @@ function! colorizedstatus#GitInfo(...) abort
 	endif
 	if exists('*FugitiveGitDir')
 		if !empty(FugitiveGitDir(bufnr('')))
-			return fugitive#Statusline()
+			return FugitiveHead(6)
 		endif
 	endif
 	return ''
